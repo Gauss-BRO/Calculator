@@ -1,19 +1,16 @@
 public class Calculator {
     private final String line;
-    private String sign;
-    private String a;
-    private String b;
     public Calculator(String line){
         this.line = line.replaceAll("\\s", "");
     }
     public String computation() {
-        sign = operationCheck();
+        String sign = operationCheck();
         String[] split = line.split(sign);
-        a = split[0];
-        b = split[1];
+        String a = split[0];
+        String b = split[1];
         int aEnd = 0;
         int bEnd = 0;
-        double result = 0;
+        int result = 0;
         if (numberCheck(a, b)) {
             aEnd = RomeNumber.toArabic(a);
             bEnd = RomeNumber.toArabic(b);
@@ -36,15 +33,13 @@ public class Calculator {
                 break;
         }
         if (numberCheck(a, b)){
-            if (result % 1 == 0) {
-                return RomeNumber.toRome((int)result);
+            if (result > 0) {
+                return RomeNumber.toRome(result);
             } else {
-                return a + "/" + b + " дробных римских цифр нет";
+                throw new RuntimeException("Неверно записаны числа");
             }
         } else {
-            if (result % 1 == 0) {
-                return String.format("%.0f", result);
-            } else return String.format("%.3f",result);
+            return String.valueOf(result);
         }
     }
     private boolean numberCheck(String a, String b) {
@@ -56,7 +51,7 @@ public class Calculator {
                 throw new RuntimeException("Число не может быть больше 10 или меньше 1");
             } else return false;
         } catch (NumberFormatException ex) {
-            throw new RuntimeException("Неверно задано римское число");
+            throw new RuntimeException("Неверно записаны числа");
         }
     }
     private String operationCheck() {
@@ -85,7 +80,7 @@ public class Calculator {
     private int multiplication (int a, int b){
         return a * b;
     }
-    private double division (int a, int b){
-        return a / (double)b;
+    private int division (int a, int b){
+        return a / b;
     }
 }
