@@ -56,7 +56,7 @@ public class Calculator {
                 throw new RuntimeException("Число не может быть больше 10 или меньше 1");
             } else return false;
         } catch (NumberFormatException ex) {
-            throw new RuntimeException("Неверно задано римское число");
+            throw new RuntimeException("Неверный формат чисел");
         }
     }
     private String operationCheck() {
