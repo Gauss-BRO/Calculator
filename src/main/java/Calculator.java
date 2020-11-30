@@ -36,7 +36,7 @@ public class Calculator {
             if (result > 0) {
                 return RomeNumber.toRome(result);
             } else {
-                throw new RuntimeException("Неверно записаны числа");
+                throw new RuntimeException("Римская цифра не может быть меньше единицы");
             }
         } else {
             return String.valueOf(result);
@@ -51,11 +51,7 @@ public class Calculator {
                 throw new RuntimeException("Число не может быть больше 10 или меньше 1");
             } else return false;
         } catch (NumberFormatException ex) {
-<<<<<<< HEAD
             throw new RuntimeException("Неверно записаны числа");
-=======
-            throw new RuntimeException("Неверный формат чисел");
->>>>>>> 5cea11bf7e4b8109ae5aacc944702eb56e609d8b
         }
     }
     private String operationCheck() {
