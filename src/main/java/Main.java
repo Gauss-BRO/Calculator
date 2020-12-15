@@ -4,13 +4,15 @@ import java.io.InputStreamReader;
 
 public class Main {
     public static void main(String[] args) {
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {
-            String line = reader.readLine();
-            Calculator calculator = new Calculator(line);
-            System.out.println(calculator.computation());
+            String line = reader.readLine().replaceAll(" ", "");
+            App app = new App(line);
+            app.calculation();
+            System.out.println(app.getResult());
         } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println(ex);
         }
     }
 }
